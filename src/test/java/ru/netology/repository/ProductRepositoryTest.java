@@ -2,10 +2,11 @@ package ru.netology.repository;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import ru.netology.domain.Book;
+import ru.netology.domain.NotFoundException;
 import ru.netology.domain.Product;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,6 +40,10 @@ class ProductRepositoryTest {
     Product[] actual = repository.findAll();
     Product[] expected = new Product[]{first, second};
     assertArrayEquals(expected, actual);
-
+  }
+  @Test
+  public void shouldThrowCheckedException(){
+    int idToRemove = 4;
+    assertThrows(NotFoundException.class, () -> repository.removeById(idToRemove));
   }
 }
