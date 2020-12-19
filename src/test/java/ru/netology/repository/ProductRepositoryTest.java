@@ -1,8 +1,6 @@
 package ru.netology.repository;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import ru.netology.domain.Book;
 import ru.netology.domain.NotFoundException;
 import ru.netology.domain.Product;
@@ -23,11 +21,10 @@ class ProductRepositoryTest {
     assertArrayEquals(expected, actual);
   }
 
-  @ParameterizedTest
-  @ValueSource(ints = {3, 4})
-  public void shouldRemoveId(int idToRemove){
+  @Test
+  public void shouldRemoveId(){
 
-    //int idToRemove = 3;
+    int idToRemove = 3;
     Product first = new Product(1, "first", 100);
     Product second = new Product(2, "second", 110);
     Product third = new Product(3, "third", 80);
